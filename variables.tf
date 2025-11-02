@@ -1,11 +1,11 @@
-variable "cluster_name" {
-  description = "EKS Cluster name"
+variable "region" {
+  description = "AWS region to deploy EKS cluster"
   type        = string
-  default     = "my-eks-cluster"
+  default     = "us-east-1"
 }
 
-variable "instance_type" {
-  description = "EC2 instance type for EKS worker nodes"
+variable "cluster_name" {
+  description = "EKS cluster name"
   type        = string
-  default     = "t3.small"
+  default     = "my-eks-cluster"
 }
