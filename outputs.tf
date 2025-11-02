@@ -13,7 +13,17 @@ output "cluster_security_group_id" {
   value       = module.eks.cluster_security_group_id
 }
 
-output "node_group_role_arn" {
-  description = "IAM role ARN for the node group"
-  value       = module.eks.node_groups["default"].iam_role_arn
+output "cluster_oidc_issuer_url" {
+  description = "OIDC issuer URL for IRSA"
+  value       = module.eks.cluster_oidc_issuer_url
+}
+
+output "cluster_iam_role_arn" {
+  description = "IAM role ARN for the EKS cluster"
+  value       = module.eks.cluster_iam_role_arn
+}
+
+output "node_group_iam_role_arns" {
+  description = "IAM role ARNs for all managed node groups"
+  value       = [for ng in module.eks.eks_managed_node_groups : ng.iam_role_arn]
 }
